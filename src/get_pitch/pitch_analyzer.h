@@ -19,7 +19,8 @@ namespace upc {
 	/// Wndow type
     enum Window {
 		RECT, 						///< Rectangular window
-		HAMMING						///< Hamming window
+		HAMMING				///< Hamming window
+    
 	};
 
     void set_window(Window type); ///< pre-compute window
@@ -35,6 +36,8 @@ namespace upc {
 	/// Computes correlation from lag=0 to r.size()
 	///
     void autocorrelation(const std::vector<float> &x, std::vector<float> &r) const;
+    void AMDF(const std::vector<float> &x, std::vector<float> &amdf) const;
+    float zerocrossing(const std::vector<float> &x) const;
 
 	///
 	/// Returns the pitch (in Hz) of input frame x
@@ -44,7 +47,7 @@ namespace upc {
 	///
 	/// Returns true is the frame is unvoiced
 	///
-    bool unvoiced(float pot, float r1norm, float rmaxnorm) const;
+    bool unvoiced(float pot, float r1norm, float rmaxnorm, float zcr) const;
 
 
   public:
